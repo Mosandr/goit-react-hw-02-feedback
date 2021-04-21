@@ -1,0 +1,16 @@
+.Statistics {
+  color: teal;
+  font-weight: bold;
+}
+
+.Good {
+  color: orange;
+}
+
+.Neutral {
+  color: green;
+}
+
+.Bad {
+  color: red;
+}

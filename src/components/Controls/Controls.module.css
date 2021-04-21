@@ -1,0 +1,23 @@
+.Controls > button:not(:last-child) {
+  margin-right: 15px;
+}
+
+.Button {
+  min-width: 80px;
+  padding: 5px;
+  color: white;
+  background: orange;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.ButtonNeutral {
+  composes: Button;
+  background: green;
+}
+
+.ButtonBad {
+  composes: Button;
+  background: red;
+}
