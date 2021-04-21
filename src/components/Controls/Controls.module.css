@@ -8,16 +8,14 @@
   color: white;
   background: orange;
   border: none;
+  outline: none;
   border-radius: 5px;
   margin-bottom: 10px;
+
+  transform: scale(1);
+  transition: transform 250ms;
 }
 
-.ButtonNeutral {
-  composes: Button;
-  background: green;
-}
-
-.ButtonBad {
-  composes: Button;
-  background: red;
+.Button:hover {
+  transform: scale(1.1);
 }

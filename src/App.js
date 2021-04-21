@@ -29,8 +29,8 @@ class App extends Component {
   render() {
     const feedbackOptions = [
       { feedbackType: "Good", color: "orange" },
-      { feedbackType: "Bad", color: "green" },
-      { feedbackType: "Neutral", color: "red" },
+      { feedbackType: "Neutral", color: "green" },
+      { feedbackType: "Bad", color: "red" },
     ];
 
     return (
