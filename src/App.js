@@ -11,20 +11,10 @@ class App extends Component {
     bad: 0,
   };
 
-  onGoodClick = () => {
+  onFeedbackClick = (event) => {
+    const feedBackType = event.target.textContent.toLowerCase();
     this.setState((prev) => {
-      return { good: prev.good + 1 };
-    });
-  };
-
-  onNeutralClick = () => {
-    this.setState((prev) => {
-      return { neutral: prev.neutral + 1 };
-    });
-  };
-  onBadClick = () => {
-    this.setState((prev) => {
-      return { bad: prev.bad + 1 };
+      return { [feedBackType]: prev[feedBackType] + 1 };
     });
   };
 
@@ -37,13 +27,18 @@ class App extends Component {
   };
 
   render() {
+    const feedbackOptions = [
+      { feedbackType: "Good", color: "orange" },
+      { feedbackType: "Bad", color: "green" },
+      { feedbackType: "Neutral", color: "red" },
+    ];
+
     return (
       <Container>
         <Title titleText={"Please leave feedback"} />
         <Controls
-          onGoodClick={this.onGoodClick}
-          onNeutralClick={this.onNeutralClick}
-          onBadClick={this.onBadClick}
+          onFeedbackClick={this.onFeedbackClick}
+          btnList={feedbackOptions}
         />
         <Title titleText={"Statistics"} />
         <Statistics
