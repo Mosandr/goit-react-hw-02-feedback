@@ -3,7 +3,12 @@ import styles from "../Statistics/Statistics.module.css";
 
 import PropTypes from "prop-types";
 
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+const Statistics = ({
+  feedback,
+  feedbackOptions,
+  total,
+  positivePercentage,
+}) => {
   if (total === 0)
     return (
       <div className={styles.Statistics}>
@@ -11,11 +16,23 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
       </div>
     );
 
+  let color = "teal";
+
   return (
     <div className={styles.Statistics}>
-      <p className={styles.Good}>Good: {good}</p>
-      <p className={styles.Neutral}>Neutral: {neutral}</p>
-      <p className={styles.Bad}>Bad: {bad}</p>
+      {feedback.map((item) => {
+        color = feedbackOptions.reduce((acc, option) => {
+          if (option["feedbackType"] === item[0]) return acc + option["color"];
+          return acc;
+        }, "");
+
+        return (
+          <p key={item[0]} style={{ color: color }}>
+            {item[0]} : {item[1]}
+          </p>
+        );
+      })}
+
       <p>Total: {total}</p>
       <p>Positive feedback: {positivePercentage}%</p>
     </div>
@@ -24,9 +41,13 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
 
 Statistics.propTypes = {
   positivePercentage: PropTypes.number.isRequired,
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
+  feedback: PropTypes.arrayOf(PropTypes.array).isRequired,
+  feedbackOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      color: PropTypes.string.isRequired,
+      feedbackType: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   total: PropTypes.number.isRequired,
 };
 

@@ -28,9 +28,9 @@ class App extends Component {
 
   render() {
     const feedbackOptions = [
-      { feedbackType: "Good", color: "orange" },
-      { feedbackType: "Neutral", color: "green" },
-      { feedbackType: "Bad", color: "red" },
+      { feedbackType: "good", color: "orange" },
+      { feedbackType: "neutral", color: "green" },
+      { feedbackType: "bad", color: "red" },
     ];
 
     return (
@@ -42,9 +42,10 @@ class App extends Component {
         />
         <Title titleText={"Statistics"} />
         <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
+          feedback={Object.entries(this.state)}
+          feedbackOptions={feedbackOptions}
+          // neutral={this.state.neutral}
+          // bad={this.state.bad}
           total={this.countTotalFeedback()}
           positivePercentage={this.countPositiveFeedbackPercentage()}
         />
