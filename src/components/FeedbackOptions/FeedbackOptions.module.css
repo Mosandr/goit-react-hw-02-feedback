@@ -1,4 +1,4 @@
-.Controls > button:not(:last-child) {
+.FeedbackOptions > button:not(:last-child) {
   margin-right: 15px;
 }
 

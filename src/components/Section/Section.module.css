@@ -1,4 +1,4 @@
-.Title {
+.Section {
   font-size: 24px;
   font-weight: bold;
   color: teal;
@@ -8,19 +8,19 @@
 }
 
 @media screen and (min-width: 480px) {
-  .Title {
+  .Section {
     font-size: 28px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .Title {
+  .Section {
     font-size: 36px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .Title {
+  .Section {
     font-size: 42px;
   }
 }

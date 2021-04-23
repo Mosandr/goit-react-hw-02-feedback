@@ -3,25 +3,12 @@ import styles from "../Statistics/Statistics.module.css";
 
 import PropTypes from "prop-types";
 
-const Statistics = ({
-  feedback,
-  feedbackOptions,
-  total,
-  positivePercentage,
-}) => {
-  if (total === 0)
-    return (
-      <div className={styles.Statistics}>
-        <p>Not feedback given</p>
-      </div>
-    );
-
+const Statistics = ({ feedback, options, total, positivePercentage }) => {
   let color = "teal";
-
   return (
     <div className={styles.Statistics}>
       {feedback.map((item) => {
-        color = feedbackOptions.reduce((acc, option) => {
+        color = options.reduce((acc, option) => {
           if (option["feedbackType"] === item[0]) return acc + option["color"];
           return acc;
         }, "");
@@ -42,7 +29,7 @@ const Statistics = ({
 Statistics.propTypes = {
   positivePercentage: PropTypes.number.isRequired,
   feedback: PropTypes.arrayOf(PropTypes.array).isRequired,
-  feedbackOptions: PropTypes.arrayOf(
+  options: PropTypes.arrayOf(
     PropTypes.shape({
       color: PropTypes.string.isRequired,
       feedbackType: PropTypes.string.isRequired,
