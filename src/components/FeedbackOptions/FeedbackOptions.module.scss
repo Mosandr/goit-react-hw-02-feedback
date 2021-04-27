@@ -17,6 +17,14 @@
   transition: transform 250ms;
 }
 
+.neutral {
+  background: green;
+}
+
+.bad {
+  background: red;
+}
+
 .Button:hover {
   transform: scale(1.1);
 }

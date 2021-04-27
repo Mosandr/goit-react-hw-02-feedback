@@ -1,7 +1,8 @@
 import React from "react";
-import styles from "../FeedbackOptions/FeedbackOptions.module.css";
+import styles from "../FeedbackOptions/FeedbackOptions.module.scss";
 
 import PropTypes from "prop-types";
+const classNames = require("classnames");
 
 const Controls = ({ options, onLeaveFeedback }) => {
   return (
@@ -9,13 +10,12 @@ const Controls = ({ options, onLeaveFeedback }) => {
       {options.map((option) => {
         return (
           <button
-            key={option.feedbackType}
+            key={option}
             onClick={onLeaveFeedback}
             type="button"
-            className={styles.Button}
-            style={{ backgroundColor: option.color }}
+            className={classNames(styles.Button, styles[option])}
           >
-            {option.feedbackType}
+            {option}
           </button>
         );
       })}
@@ -25,12 +25,7 @@ const Controls = ({ options, onLeaveFeedback }) => {
 
 Controls.propTypes = {
   onLeaveFeedback: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      feedbackType: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired,
-    })
-  ),
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export default Controls;

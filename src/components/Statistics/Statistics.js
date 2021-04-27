@@ -1,20 +1,15 @@
 import React from "react";
-import styles from "../Statistics/Statistics.module.css";
+import styles from "../Statistics/Statistics.module.scss";
 
 import PropTypes from "prop-types";
+const classNames = require("classnames");
 
-const Statistics = ({ feedback, options, total, positivePercentage }) => {
-  let color = "teal";
+const Statistics = ({ feedback, total, positivePercentage }) => {
   return (
     <div className={styles.Statistics}>
       {feedback.map((item) => {
-        color = options.reduce((acc, option) => {
-          if (option["feedbackType"] === item[0]) return acc + option["color"];
-          return acc;
-        }, "");
-
         return (
-          <p key={item[0]} style={{ color: color }}>
+          <p key={item[0]} className={classNames(styles[item[0]])}>
             {item[0]} : {item[1]}
           </p>
         );
@@ -29,12 +24,6 @@ const Statistics = ({ feedback, options, total, positivePercentage }) => {
 Statistics.propTypes = {
   positivePercentage: PropTypes.number.isRequired,
   feedback: PropTypes.arrayOf(PropTypes.array).isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      color: PropTypes.string.isRequired,
-      feedbackType: PropTypes.string.isRequired,
-    })
-  ).isRequired,
   total: PropTypes.number.isRequired,
 };
 

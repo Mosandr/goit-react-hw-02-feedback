@@ -28,11 +28,7 @@ class App extends Component {
   };
 
   render() {
-    const feedbackOptions = [
-      { feedbackType: "good", color: "orange" },
-      { feedbackType: "neutral", color: "green" },
-      { feedbackType: "bad", color: "red" },
-    ];
+    const feedbackOptions = Object.keys(this.state);
 
     return (
       <Container>
@@ -48,7 +44,6 @@ class App extends Component {
           ) : (
             <Statistics
               feedback={Object.entries(this.state)}
-              options={feedbackOptions}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
