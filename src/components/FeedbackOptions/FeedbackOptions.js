@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../FeedbackOptions/FeedbackOptions.module.scss";
 
 import PropTypes from "prop-types";
-const classNames = require("classnames");
+import classNames from "classnames";
 
 const Controls = ({ options, onLeaveFeedback }) => {
   return (

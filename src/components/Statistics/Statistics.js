@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Statistics/Statistics.module.scss";
 
 import PropTypes from "prop-types";
-const classNames = require("classnames");
+import classNames from "classnames";
 
 const Statistics = ({ feedback, total, positivePercentage }) => {
   return (
